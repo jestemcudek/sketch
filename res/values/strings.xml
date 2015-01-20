@@ -3,5 +3,8 @@
 
     <string name="app_name">PhotoSketch</string>
     <string name="hello_world">Hello world!</string>
+    <string name="make_photo">Zrób zdjęcie</string>
+    <string name="edit_photo">Edytuj zdjęcie</string>
+    <string name="save_photo">Zapisz zdjęcie</string>
 
 </resources>
