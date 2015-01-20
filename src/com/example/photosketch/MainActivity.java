@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -55,6 +56,10 @@ public class MainActivity extends Activity {
 		if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
 			Bundle extras = data.getExtras();
 			Bitmap imageBitmap = (Bitmap) extras.get("data");
+			if(imageBitmap != null)
+				Toast.makeText(getApplicationContext(), "Zrobiono zdjêcie", Toast.LENGTH_SHORT).show();
+			else
+				Toast.makeText(getApplicationContext(), "Nie zrobiono zdjêcia", Toast.LENGTH_SHORT).show();
 			ImageView imageView = (ImageView) findViewById(R.id.imageView1);
 			imageView.setImageBitmap(imageBitmap);
 		}
