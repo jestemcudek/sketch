@@ -11,4 +11,12 @@
     <string name="marker_width">Grubość pisaka</string>
     <string name="marker_color">Kolor pisaka</string>
 
+    <string-array name="color">
+        <item>Czerwony</item>
+        <item>Zielony</item>
+        <item>Niebieski</item>
+        <item>Żółty</item>
+        <item>Czarny</item>
+    </string-array>
+
 </resources>

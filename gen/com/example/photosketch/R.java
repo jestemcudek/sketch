@@ -8,21 +8,24 @@
 package com.example.photosketch;
 
 public final class R {
+    public static final class array {
+        public static final int color=0x7f050000;
+    }
     public static final class attr {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f060000;
-        public static final int drawingView1=0x7f060005;
-        public static final int editPhotoButton=0x7f060007;
-        public static final int makePhotoButton=0x7f060006;
-        public static final int savePhotoButton=0x7f060008;
-        public static final int seekBar1=0x7f060002;
-        public static final int spinner1=0x7f060004;
-        public static final int textView1=0x7f060001;
-        public static final int textView2=0x7f060003;
+        public static final int LinearLayout1=0x7f070000;
+        public static final int drawingView1=0x7f070005;
+        public static final int editPhotoButton=0x7f070007;
+        public static final int makePhotoButton=0x7f070006;
+        public static final int savePhotoButton=0x7f070008;
+        public static final int seekBar1=0x7f070002;
+        public static final int spinner1=0x7f070004;
+        public static final int textView1=0x7f070001;
+        public static final int textView2=0x7f070003;
     }
     public static final class layout {
         public static final int activity_edit_photo=0x7f030000;
@@ -62,10 +65,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f050000;
+        public static final int AppBaseTheme=0x7f060000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f050001;
+        public static final int AppTheme=0x7f060001;
     }
 }
