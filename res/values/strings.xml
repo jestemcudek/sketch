@@ -9,5 +9,6 @@
     <string name="title_activity_photo">PhotoActivity</string>
     <string name="title_activity_edit_photo">EditPhotoActivity</string>
     <string name="marker_width">Grubość pisaka</string>
+    <string name="marker_color">Kolor pisaka</string>
 
 </resources>

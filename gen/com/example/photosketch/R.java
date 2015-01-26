@@ -15,12 +15,12 @@ public final class R {
     }
     public static final class id {
         public static final int LinearLayout1=0x7f060000;
+        public static final int drawingView1=0x7f060005;
         public static final int editPhotoButton=0x7f060007;
-        public static final int expandableListView1=0x7f060004;
-        public static final int imageView1=0x7f060005;
         public static final int makePhotoButton=0x7f060006;
         public static final int savePhotoButton=0x7f060008;
         public static final int seekBar1=0x7f060002;
+        public static final int spinner1=0x7f060004;
         public static final int textView1=0x7f060001;
         public static final int textView2=0x7f060003;
     }
@@ -34,6 +34,7 @@ public final class R {
         public static final int edit_photo=0x7f040003;
         public static final int hello_world=0x7f040001;
         public static final int make_photo=0x7f040002;
+        public static final int marker_color=0x7f040008;
         public static final int marker_width=0x7f040007;
         public static final int save_photo=0x7f040004;
         public static final int title_activity_edit_photo=0x7f040006;

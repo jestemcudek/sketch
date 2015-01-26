@@ -20,6 +20,8 @@ public class MainActivity extends Activity {
 
 	static final int REQUEST_IMAGE_CAPTURE = 1;
 
+	private Bitmap bitmap;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -43,6 +45,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(getApplicationContext(),EditPhotoActivity.class);
+				intent.putExtra("BitmapImage",bitmap);
 				startActivity(intent);
 				
 				
@@ -55,13 +58,12 @@ public class MainActivity extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
 			Bundle extras = data.getExtras();
-			Bitmap imageBitmap = (Bitmap) extras.get("data");
-			if(imageBitmap != null)
-				Toast.makeText(getApplicationContext(), "Zrobiono zdjêcie", Toast.LENGTH_SHORT).show();
-			else
-				Toast.makeText(getApplicationContext(), "Nie zrobiono zdjêcia", Toast.LENGTH_SHORT).show();
-			ImageView imageView = (ImageView) findViewById(R.id.imageView1);
-			imageView.setImageBitmap(imageBitmap);
+			bitmap = (Bitmap) extras.get("data");
+//			if(imageBitmap != null)
+//				Toast.makeText(getApplicationContext(), "Zrobiono zdjêcie", Toast.LENGTH_SHORT).show();
+//			else
+//				Toast.makeText(getApplicationContext(), "Nie zrobiono zdjêcia", Toast.LENGTH_SHORT).show();
+			
 		}
 	}
 }
