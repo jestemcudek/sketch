@@ -29,8 +29,10 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 
 	static final int REQUEST_IMAGE_CAPTURE = 1;
+	static final int EDITED_PHOTO = 2;
 
 	private Bitmap bitmap;
+	private Bitmap editedBitmap;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,44 +59,8 @@ public class MainActivity extends Activity {
 				Intent intent = new Intent(getApplicationContext(),
 						EditPhotoActivity.class);
 				intent.putExtra("BitmapImage", bitmap);
-				startActivity(intent);
+				startActivityForResult(intent, 2);
 
-			}
-		});
-
-		Button savePhoto = (Button) findViewById(R.id.savePhotoButton);
-		savePhoto.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				DrawingView dView = (DrawingView)findViewById(R.id.drawingView1);
-				Bitmap bm =dView.getDrawingCache();
-
-	               Intent imageIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-	                File imagesFolder = new File(Environment.getExternalStorageDirectory(), "Punch");
-	                imagesFolder.mkdirs(); 
-	                String fileName = "image"  + ".jpg";
-	                File output = new File(imagesFolder, fileName);
-	                Uri uriSavedImage = Uri.fromFile(output);
-	                imageIntent.putExtra(MediaStore.EXTRA_OUTPUT, uriSavedImage);
-	                OutputStream fos = null;
-
-	                try {
-	                    fos = getContentResolver().openOutputStream(uriSavedImage);
-	                    bm.compress(CompressFormat.JPEG, 100, fos);
-	                    fos.flush();
-	                    fos.close();
-	                    } 
-	                catch (FileNotFoundException e) 
-	                    {
-	                    e.printStackTrace();
-	                    } 
-	                catch (IOException e)
-	                {
-	                    e.printStackTrace();
-	                } 
-	                finally
-	                {}               
 			}
 		});
 
@@ -113,5 +79,38 @@ public class MainActivity extends Activity {
 			// Toast.LENGTH_SHORT).show();
 
 		}
+		else if (resultCode == RESULT_OK) {
+			Bundle extras = data.getExtras();
+			editedBitmap = (Bitmap) extras.get("Edited");
+			if(editedBitmap!=null)
+				Toast.makeText(getApplicationContext(), "Jest bitmapa", Toast.LENGTH_SHORT).show();
+			else
+				Toast.makeText(getApplicationContext(),"Nie ma bitmapy",Toast.LENGTH_SHORT).show();
+			
+		}
+		super.onActivityResult(requestCode, resultCode, data);
+
+	}
+	public void SaveClick(View v) {
+		DrawingView dv = (DrawingView)findViewById(R.id.drawingView1);
+		Bitmap bmp = dv.getDrawingCache();
+		if (bmp != null) {
+			Toast.makeText(getApplicationContext(), "Coœ tam jest", Toast.LENGTH_SHORT).show();
+			Bitmap bm = bmp;
+
+			File root = Environment.getExternalStorageDirectory();
+			File file = new File(root.getAbsolutePath()
+					+ "/DCIM/Camera/img.jpg");
+			try {
+				file.createNewFile();
+				FileOutputStream ostream = new FileOutputStream(file);
+				bm.compress(CompressFormat.JPEG, 100, ostream);
+				ostream.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		else
+			Toast.makeText(getApplicationContext(), "Brak bitmapy", Toast.LENGTH_SHORT).show();
 	}
 }

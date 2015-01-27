@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 public class EditPhotoActivity extends Activity {
 	Paint paint = new Paint();
+	DrawingView dView = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,7 @@ public class EditPhotoActivity extends Activity {
 		setContentView(R.layout.activity_edit_photo);
 		Intent intent = getIntent();
 		Bitmap bitmap = (Bitmap) intent.getParcelableExtra("BitmapImage");
-		final DrawingView dView = (DrawingView) findViewById(R.id.drawingView1);
+		dView = (DrawingView) findViewById(R.id.drawingView1);
 		dView.setImageBitmap(bitmap);
 		SeekBar seekbar = (SeekBar) findViewById(R.id.seekBar1);
 		paint.setStrokeWidth(seekbar.getProgress());
@@ -91,4 +92,23 @@ public class EditPhotoActivity extends Activity {
 		});
 		// dView.setLayerPaint(paint);
 	}
+
+	@Override
+	protected void onStop() {
+		Intent intent = new Intent();
+		intent.putExtra("Edited", dView.getDrawingCache());
+		setResult(RESULT_OK, intent);
+		Toast.makeText(getApplicationContext(), "Koniec", Toast.LENGTH_SHORT)
+				.show();
+		super.onStop();
+	}
+
+	public void StopEditing(View v) {
+		Intent intent = new Intent();
+		intent.putExtra("Edited", dView.getDrawingCache());
+		setResult(RESULT_OK, intent);
+		
+	this.finish();
+	}
+
 }
